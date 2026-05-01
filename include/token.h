@@ -1,7 +1,6 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
-#include <common.h>
 #include <string>
 #include <unordered_map>
 #include <variant>

@@ -1,4 +1,5 @@
 #include <scanner.h>
+#include <sk.h>
 
 Scanner::Scanner(const std::string source) :
     m_source(source) {}
@@ -38,10 +39,10 @@ std::vector<Token> Scanner::tokenize() {
                     parse_identifier(c);
                     continue;
                 }
+                SK::error(std::format("Neznamy symbol: {}", c), m_line);
             }break;
         }
     }
-
     return m_tokens;
 }
 
