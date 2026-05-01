@@ -6,6 +6,6 @@ void SK::run(const std::string source) {
     
     std::cout << "---TOKENS---" << std::endl;
     for (Token &token : tokens) {
-        std::cout << token.to_string() << std::endl;
+        std::cout << token << std::endl;
     }
 }

@@ -66,13 +66,16 @@ public:
     bool operator==(const Token& other) const {
         return m_type == other.get_type() &&
                m_line == other.get_line() &&
-               m_lexeme == other.get_lexeme();
+               m_lexeme == other.get_lexeme() &&
+               m_value == other.get_value();
     }
 private:
     const TokenType m_type;
     const int m_line;
     const std::string m_lexeme;
     const Value m_value;
+private:
+    std::string value_to_string(Value value) const;
 }; 
 
 inline std::ostream& operator<<(std::ostream& os, const Token& t) {

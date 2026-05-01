@@ -80,6 +80,7 @@ void Scanner::parse_digit(const char c) {
     while(is_digit(peek())) value += advance();
     
     if (peek() == '.') {
+        value += '.';
         advance();
         while(is_digit(peek())) value += advance();
     }
