@@ -16,6 +16,7 @@ void SK::run(const std::string source) {
     std::cout << "-----AST-----" << std::endl;
     for (std::shared_ptr<Stmnt> stmnt : statements) {
         std::cout << stmnt->to_string();
+        std::cout << std::endl;
     }
 }
 

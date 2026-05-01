@@ -14,10 +14,22 @@ private:
     std::vector<Token> m_tokens;
     std::size_t m_ip { 0 };
 private:
-    bool match(std::initializer_list<TokenType> tokens);
+    std::shared_ptr<Stmnt> expression();
+    std::shared_ptr<Expr> expression_stmnt();
+    std::shared_ptr<Expr> equality(); 
+    std::shared_ptr<Expr> comparison();
+    std::shared_ptr<Expr> additive();
+    std::shared_ptr<Expr> factor();
+    std::shared_ptr<Expr> unary();
+    std::shared_ptr<Expr> primary();
+
+    template<typename... TokenTypes>
+    bool match(TokenTypes... types);
+
     Token &peek();
+    Token previous();
     void advance();
-    void consume(TokenType type);
+    void consume(TokenType type, const std::string message);
 };
 
 #endif
