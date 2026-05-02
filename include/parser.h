@@ -3,6 +3,7 @@
 
 #include <common.h>
 #include <token.h>
+#include <parse_error.h>
 #include <vector>
 #include <stmnt.h>
 

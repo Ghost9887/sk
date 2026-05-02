@@ -90,7 +90,7 @@ std::shared_ptr<Expr> Parser::primary() {
         consume(TokenType::T_RPAREN, "Ocakavany ')'");
         return std::make_shared<GroupingExpr>(expr);
     }
-
+    
     return nullptr;
 }
 
@@ -118,8 +118,11 @@ void Parser::advance() {
     m_ip++;
 }
 
-void Parser::consume(TokenType type, [[maybeunused]]const std::string message) {
+void Parser::consume(TokenType type, const std::string message) {
     if (peek().get_type() == type) {
         advance();
+        return;
     }
+
+    throw ParseError(std::format("{} riadok: {}", message, peek().get_line()));
 }
