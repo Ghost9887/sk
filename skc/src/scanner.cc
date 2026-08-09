@@ -142,11 +142,11 @@ void Scanner::ParseNumber()
     if (isDouble)
     {
         double value = std::stod(mContent.substr(mStart, mCurrent - mStart));
-        MakeToken(TokenType::NUMBER, value);
+        MakeToken(TokenType::DOUBLE, value);
     }else
     {
         int value = std::stoi(mContent.substr(mStart, mCurrent - mStart));
-        MakeToken(TokenType::NUMBER, value);
+        MakeToken(TokenType::INT, value);
     }
 }
 

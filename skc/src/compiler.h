@@ -2,12 +2,12 @@
 #define COMPILER_H
 
 #include <memory>
-#include <vector>
-#include <fstream>
 #include "stmnt.h"
 #include "expr.h"
+#include <vector>
+#include <fstream>
 
-enum class OpCode : std::uint8_t
+enum class OpCode
 {
     STRING,
     INT,
@@ -44,6 +44,8 @@ public:
 private:
     void WriteCode(OpCode code);
     void WriteString(const std::string& str);
+    template<typename T>
+    void WriteValue(T value);
     void Evaluate(Expr& expr);
     void Execute(Stmnt& stmnt);
 private:

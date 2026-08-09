@@ -134,7 +134,8 @@ std::unique_ptr<Expr> Parser::Unary()
 
 std::unique_ptr<Expr> Parser::Primary()
 {
-    if (Match({TokenType::BOOLEAN, TokenType::STRING, TokenType::NUMBER}))
+    if (Match({TokenType::BOOLEAN, TokenType::STRING, 
+                TokenType::DOUBLE, TokenType::INT, TokenType::NIL}))
         return std::make_unique<ValueExpr>(Previous().GetValue());
     if (Match({TokenType::LPAREN}))
     {

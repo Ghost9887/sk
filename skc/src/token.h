@@ -16,7 +16,7 @@ enum class TokenType
     LESSER_EQUAL,
 
     IDENTIFIER, IF, ELSE, WHILE, FOR, FUNC, PRINT,
-    STRING, NUMBER, BOOLEAN, NIL, CLASS, LET, RETURN 
+    STRING, INT, DOUBLE, BOOLEAN, NIL, CLASS, LET, RETURN 
 };
 
 inline static std::unordered_map<TokenType, std::string> tokensMap = 
@@ -38,7 +38,8 @@ inline static std::unordered_map<TokenType, std::string> tokensMap =
     {TokenType::IF, "If"}, {TokenType::ELSE, "Else"},
     {TokenType::WHILE, "While"}, {TokenType::FOR, "For"},
     {TokenType::FUNC, "Func"}, {TokenType::STRING, "String"},
-    {TokenType::NUMBER, "Number"}, {TokenType::BOOLEAN, "Boolean"},
+    {TokenType::INT, "Int"}, {TokenType::DOUBLE, "Double"}, 
+    {TokenType::BOOLEAN, "Boolean"},
     {TokenType::NIL, "Nil"}, {TokenType::CLASS, "Class"}, 
     {TokenType::LET, "Let"}, {TokenType::RETURN, "Return"}
 };
