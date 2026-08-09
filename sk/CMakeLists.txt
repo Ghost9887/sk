@@ -1,20 +1,18 @@
-cmake_minimum_required(VERSION 3.10)
-project(sk)
-
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
-
-file(GLOB_RECURSE APP_SOURCES
-    ${CMAKE_SOURCE_DIR}/src/*.cc
+file(GLOB_RECURSE SK_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc
 )
 
-add_executable(sk ${APP_SOURCES})
-
-target_include_directories(sk
-    PRIVATE
-        ${CMAKE_SOURCE_DIR}/src
+list(REMOVE_ITEM SK_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cc
 )
 
-target_compile_options(sk PRIVATE -Wall -Wextra -Wpedantic)
+add_library(sk_lib ${SK_SOURCES})
+
+target_include_directories(sk_lib PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+target_compile_options(sk_lib PRIVATE -Wall -Wextra -Wpedantic -Og -g)
+
+add_executable(sk ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cc)
+target_link_libraries(sk PRIVATE sk_lib)

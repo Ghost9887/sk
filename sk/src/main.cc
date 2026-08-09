@@ -1,7 +1,7 @@
-#include <print>
+#include "sk.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    std::println("Hello, World!");
+    Sk::GetInstance().Run(argc, argv);
     return 0;
 }
