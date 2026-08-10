@@ -1,8 +1,8 @@
-#include "skc.h"
+#include "sk.h"
 #include "token.h"
 #include "scanner.h"
 #include "parser.h"
-#include "compiler.h"
+#include "stmnt.h"
 #include <fstream>
 #include <sstream>
 #include <print>
@@ -10,12 +10,12 @@
 
 #define DEBUG_MODE
 
-Skc::Skc() :
+Sk::Sk() :
     mHadError(false) {}
 
-Skc::~Skc() = default;
+Sk::~Sk() = default;
 
-void Skc::Run(int argc, char **argv)
+void Sk::Run(int argc, char **argv)
 {
     if (argc != 2)
     {
@@ -48,23 +48,20 @@ void Skc::Run(int argc, char **argv)
         std::println("{}", statements[i]->ToString());
     }
 #endif
-
-    Compiler compiler(statements);
-    compiler.Compile();
 }
 
-Skc& Skc::GetInstance()
+Sk& Sk::GetInstance()
 {
-    static Skc instance;
+    static Sk instance;
     return instance;
 }
 
-void Skc::PrintHelp()
+void Sk::PrintHelp()
 {
     std::println("Použitie: sk <názov súboru>");
 }
 
-std::expected<std::string, std::string> Skc::ReadFile(const char *filePath)
+std::expected<std::string, std::string> Sk::ReadFile(const char *filePath)
 {
     std::ifstream file(filePath);
 
@@ -77,7 +74,7 @@ std::expected<std::string, std::string> Skc::ReadFile(const char *filePath)
     return buffer.str();
 }
 
-void Skc::Error(const std::string& message, const Token* token)
+void Sk::Error(const std::string& message, const Token* token)
 {
     if (token) {
         std::println("\nCHYBA: {} Riadok: {} | Poloha: {}\n{}\n{}", 
@@ -91,7 +88,7 @@ void Skc::Error(const std::string& message, const Token* token)
 };
 
 
-std::string Skc::GetLine(std::size_t lineNumber)
+std::string Sk::GetLine(std::size_t lineNumber)
 {
     std::size_t currentLine = 1;
     std::string line;
@@ -117,7 +114,7 @@ std::string Skc::GetLine(std::size_t lineNumber)
     return "";
 }
 
-std::string Skc::GetLocation(std::size_t column)
+std::string Sk::GetLocation(std::size_t column)
 {
     std::string location {};
     for (std::size_t i {}; i < column; ++i)

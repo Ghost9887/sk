@@ -3,7 +3,7 @@
 
 #include <string>
 #include <stdexcept>
-#include "skc.h"
+#include "sk.h"
 
 class ParseError : public std::runtime_error
 {
@@ -16,7 +16,7 @@ public:
     }
 
     void Log() const {
-        Skc::GetInstance().Error(mMessage, mToken);
+        Sk::GetInstance().Error(mMessage, mToken);
     }
 
 private:

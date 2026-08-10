@@ -1,23 +1,23 @@
-#ifndef SKC_H
-#define SKC_H
+#ifndef SK_H
+#define SK_H
 
 #include <string>
 #include <expected>
 
 class Token;
 
-class Skc
+class Sk
 {
 public:
-    Skc(const Skc& instance) = delete;
-    Skc& operator=(const Skc&) = delete;
+    Sk(const Sk& instance) = delete;
+    Sk& operator=(const Sk&) = delete;
 
-    static Skc& GetInstance();
+    static Sk& GetInstance();
     void Error(const std::string& message, const Token* token);
     void Run(int argc, char **argv);
 private:
-    Skc();
-    ~Skc();
+    Sk();
+    ~Sk();
 
     void PrintHelp();
     std::expected<std::string, std::string> ReadFile(const char *filePath);
